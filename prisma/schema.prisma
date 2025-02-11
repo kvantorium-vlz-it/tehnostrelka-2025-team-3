@@ -52,12 +52,15 @@ model Image {
   id      Int     @id @default(autoincrement())
   src     String
   routePointImages RoutePointImage[]
+  routeImages RouteImage[]
 }
 
 model RouteImage {
   id      Int     @id @default(autoincrement())
   routeId Int
   route Route @relation(fields: [routeId], references: [id])
+  imageId Int
+  image Image @relation(fields: [imageId], references: [id])
 }
 
 model RoutePointImage {
