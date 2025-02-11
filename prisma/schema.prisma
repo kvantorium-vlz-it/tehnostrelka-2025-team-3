@@ -16,6 +16,7 @@ model User {
   name  String?
   posts Route[]
   comments Comment[]
+  rating Rating[]
 }
 
 model Route {
@@ -29,6 +30,7 @@ model Route {
   routePoints RoutePoint[]
   comments Comment[]
   routeImages RouteImage[]
+  rating Rating[]
 }
 
 model Comment {
@@ -69,4 +71,13 @@ model RoutePointImage {
   routePoint RoutePoint @relation(fields: [routePointId], references: [id])
   imageId Int
   image Image @relation(fields: [imageId], references: [id])
+}
+
+model Rating {
+  id Int  @id @default(autoincrement())
+  rating Int
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+  route Route @relation(fields: [routeId], references: [id])
+  routeId Int
 }
