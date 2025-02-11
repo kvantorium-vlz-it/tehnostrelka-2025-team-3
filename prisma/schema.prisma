@@ -28,6 +28,7 @@ model Route {
   publicly  Boolean @default(false)
   routePoints RoutePoint[]
   comments Comment[]
+  routeImages RouteImage[]
 }
 
 model Comment {
@@ -49,4 +50,10 @@ model RoutePoint {
 model Image {
   id      Int     @id @default(autoincrement())
   src     String
+}
+
+model RouteImage {
+    id      Int     @id @default(autoincrement())
+  routeId Int
+  route Route @relation(fields: [routeId], references: [id])
 }
