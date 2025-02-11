@@ -45,3 +45,8 @@ model RoutePoint {
   routeId Int
   route   Route   @relation(fields: [routeId], references: [id])
 }
+
+model Image {
+  id      Int     @id @default(autoincrement())
+  src     String
+}
