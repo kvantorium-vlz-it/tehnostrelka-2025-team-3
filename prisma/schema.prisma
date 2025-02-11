@@ -17,6 +17,7 @@ model User {
   posts Route[]
   comments Comment[]
   rating Rating[]
+  visited Completed[]
 }
 
 model Route {
@@ -31,6 +32,7 @@ model Route {
   comments Comment[]
   routeImages RouteImage[]
   rating Rating[]
+  completed Completed[]
 }
 
 model Comment {
@@ -80,4 +82,13 @@ model Rating {
   authorId Int
   route Route @relation(fields: [routeId], references: [id])
   routeId Int
+}
+
+model Completed {
+  id  Int @id @default(autoincrement())
+  visited Boolean
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+  routeId Int
+  route Route @relation(fields: [routeId], references: [id])
 }
