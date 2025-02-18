@@ -8,6 +8,10 @@ const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession()
     user: {{ user }}<br>
     session: {{ session.user }}<br>
 
+    <button @click="fetch">
+      reload
+    </button>
+
     <NuxtLink to="/api/auth/yandex" external>
       login
     </NuxtLink>
