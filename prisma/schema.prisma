@@ -23,7 +23,7 @@ model User {
 model Route {
   id        Int     @id @default(autoincrement())
   title     String
-  content   String?
+  description   String?
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
@@ -46,7 +46,10 @@ model Comment {
 
 model RoutePoint {
   id      Int     @id @default(autoincrement())
-  title   String  
+  title   String
+  description String  
+  latitude Float
+  longitude Float
   routeId Int
   route   Route   @relation(fields: [routeId], references: [id])
   routePointImages RoutePointImage[]
