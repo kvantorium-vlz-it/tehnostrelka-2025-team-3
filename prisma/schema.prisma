@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id    Int     @id @default(autoincrement())
-  yandexId Int
+  yandexId String
   posts Route[]
   comments Comment[]
   rating Rating[]
