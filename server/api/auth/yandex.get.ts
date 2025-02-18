@@ -11,16 +11,21 @@ export default defineOAuthYandexEventHandler({
             }
         })
 
+        let userFromDatabase
+
         if (existedUser === null) {
-            await prisma.user.create({
+            userFromDatabase = await prisma.user.create({
                 data: {
                     yandexId: user.id,
                 }
             })
+        } else {
+            userFromDatabase = existedUser
         }
 
         await setUserSession(event, {
             user: {
+                id: userFromDatabase.id, 
                 yandexId: user.id,
                 yandexEmail: user.default_email,
                 loggedInAt: new Date(),
