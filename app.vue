@@ -1,9 +1,17 @@
 <script setup lang="ts">
 const { loggedIn, user, session, fetch, clear, openInPopup } = useUserSession()
+
+const ratings = await $fetch('/api/route/1/rating', {
+  method: 'get'
+})
 </script>
 
 <template>
   <div>
+    {{ ratings.length <= 0 }}
+    {{ ratings.length > 0 }}
+    {{ ratings }}
+
     loggedIn: {{ loggedIn }}<br>
     user: {{ user }}<br>
     session: {{ session.user }}<br>
