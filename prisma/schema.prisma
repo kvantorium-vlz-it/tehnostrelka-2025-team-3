@@ -17,6 +17,13 @@ model User {
   comments Comment[]
   rating Rating[]
   visited Completed[]
+  adminUser AdminUser?
+}
+
+model AdminUser {
+  id    Int     @id @default(autoincrement())
+  userId Int    @unique
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Route {
